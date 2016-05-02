@@ -69,7 +69,7 @@ class DomPostsCrawler
 		}
 		
 		foreach ($allLinks as $key => $link) {
-			$post = new \App\Post;
+			$post = new Post;
 			$post->url = $this->get_absolute_permalink($link->getAttribute('href'));
 			$post->source_id = $this->source->id;
 			$links->push($post);
