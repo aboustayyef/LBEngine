@@ -25,12 +25,12 @@ class Media extends Model
 
     public function post()
     {
-    	return $this->belongsTo('\App\Post');
+    	return $this->belongsTo('\App\Models\Post');
     }
 
     public function source()
     {
-    	return $this->belongsTo('\App\Source');
+    	return $this->belongsTo('\App\Models\Source');
     }
 
     public function createCache()
@@ -46,7 +46,7 @@ class Media extends Model
     		
             // fit
             $i = $i->fit(300,200);
-    		$result = Storage::disk('public')->put('img/' . $this->hash . '.jpg', $i->encode('jpg')->stream()->__toString());
+    		$result = Storage::disk('s3')->put( $this->hash . '.jpg', $i->encode('jpg')->stream()->__toString());
     		if ($result) {
     			$this->cached = 1;
     			$this->save();

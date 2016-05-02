@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Models\Channel;
+use App\Models\Source;
 
 class NewsSourcesAdder extends Command
 {
@@ -41,18 +43,18 @@ class NewsSourcesAdder extends Command
         
         $this->info('Creating the News Chanel');
 
-        $news = \App\Channel::create([
+        $news = Channel::create([
             'shorthand'     =>  'news',
             'description'   =>  'News',
             'color'         =>  '#555555',
             'parent_id'     =>  null,
        ]);
 
-        $politics = \App\Channel::where('shorthand' , 'politics')->first();
+        $politics = Channel::where('shorthand' , 'politics')->first();
 
         $this->info('Creating The Daily Star Source');
 
-        $ds = \App\Source::create([
+        $ds = Source::create([
             'shorthand'     =>  'dailystar',
             'name'          =>  'The Daily Star',
             'description'   =>  'Lebanese Leading English Language Daily',
@@ -65,7 +67,7 @@ class NewsSourcesAdder extends Command
 
         $this->info('Creating the Naharnet Source');
 
-        $naharnet = \App\Source::create([
+        $naharnet = Source::create([
             'shorthand'     =>  'naharnet',
             'name'          =>  'Naharnet',
             'description'   =>  'Naharnet',

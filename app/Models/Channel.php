@@ -25,7 +25,7 @@ class Channel extends Model
     
     public function children()
     {
-    	return $this->hasMany('App\Channel', 'parent_id');
+    	return $this->hasMany('App\Models\Channel', 'parent_id');
     }
 
     public function addChild(Channel $channel)
@@ -49,12 +49,12 @@ class Channel extends Model
 
     public function parent()
     {     
-        return $this->belongsTo('App\Channel');
+        return $this->belongsTo('App\Models\Channel');
     }
 
 
     public function sources()
     {
-        return $this->belongsToMany('App\Source');
+        return $this->belongsToMany('App\Models\Source');
     }
 }

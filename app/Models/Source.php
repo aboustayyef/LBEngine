@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Crawlers\PostsCrawler;
 
 class Source extends Model
 {
@@ -11,7 +12,7 @@ class Source extends Model
 
     public function channels()
     {
-    	return $this->belongsToMany('\App\Channel');
+    	return $this->belongsToMany('\App\Models\Channel');
     }
 
     public function assignChannel(Channel $channel)
@@ -43,7 +44,7 @@ class Source extends Model
     {
         // crawls the web for the latest posts by this source;
         // returns an array of urls;
-        $postsCrawler = new Crawlers\PostsCrawler($this);
+        $postsCrawler = new PostsCrawler($this);
         return $postsCrawler->get();
     }
 }

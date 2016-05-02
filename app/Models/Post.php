@@ -48,7 +48,7 @@ class Post extends Model
     }
 
     function channels(){
-        return $this->belongsToMany('\App\Channel');
+        return $this->belongsToMany('\App\Models\Channel');
     }
    
     /*
