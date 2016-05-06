@@ -78,7 +78,10 @@ class Post extends Model
     	
     	$a = parse_url($url);
     	array_shift($a);
-    	$piece = implode($a);
+        $piece = $a['host'] . $a['path'];
+        if (isset($a['query'])){
+            $piece .= '?'.$a['query'];
+        }
     	$url1 = 'http://'. $piece;
     	$url2 = 'https://' . $piece;
     	$exists1 = Post::where('url', $url1)->get()->count();
