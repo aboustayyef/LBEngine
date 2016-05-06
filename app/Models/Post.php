@@ -82,6 +82,9 @@ class Post extends Model
         if (isset($a['query'])){
             $piece .= '?'.$a['query'];
         }
+        if (isset($a['fragment'])){
+            $piece .=  '#'.$a['fragment'];
+        }
     	$url1 = 'http://'. $piece;
     	$url2 = 'https://' . $piece;
     	$exists1 = Post::where('url', $url1)->get()->count();
