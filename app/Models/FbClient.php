@@ -30,8 +30,11 @@ class FbClient
 	function get_shares($url)
 	{
 		$details = $this->get_url_details($url);
-		$shares = $details['share']['share_count'];
-		return $shares;
+        if (isset($details['share'])){
+            $shares = $details['share']['share_count'];
+            return $shares;
+        }		
+        return 0;
 	}
 }
 
