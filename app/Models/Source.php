@@ -9,7 +9,7 @@ class Source extends Model
 {
 
     protected $guarded = [];
-
+    protected $hidden = ['author_email','created_at','updated_at','id'];
     public function channels()
     {
     	return $this->belongsToMany('\App\Models\Channel');
